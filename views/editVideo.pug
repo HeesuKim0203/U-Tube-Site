@@ -1,0 +1,10 @@
+extends layouts/main.pug
+
+block content
+    div.form-container 
+        form(action=routes.video.EDIT_VIDEO(video.id), method="post")
+            input(type="text", name="title", value=video.title, autocomplete="off")
+            textarea(name="description", cols="13", rows="1", autocomplete="off")=video.description
+            input(type="submit", value="Update Video")
+        a.form-container__link(href=routes.video.DELETE_VIDEO(video.id))
+            button.delete Delete Video

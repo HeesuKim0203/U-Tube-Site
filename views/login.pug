@@ -1,0 +1,9 @@
+extends layouts/main.pug
+
+block content
+    div.form-container 
+        form(action=routes.global.LOGIN, method="post", required=true)
+            input(type="email", name="email", placeholder="Email", required=true, autocomplete="off")
+            input(type="password", name="password", placeholder="password", required=true, autocomplete="off")
+            input(type="submit", value="Log In")
+        include ./partials/socialLogin

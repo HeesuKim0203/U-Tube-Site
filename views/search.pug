@@ -1,0 +1,17 @@
+extends layouts/main.pug
+include ./mixins/videoBlock
+
+block content
+    div.search__header 
+        h3 Searching for : #{searchingBy}
+    div.search__video 
+        if video.length === 0
+            h5 Not found video !!
+        else
+            each item in video
+                +videoBlock({
+                    title : item.title,
+                    views : item.views,
+                    description : item.description,
+                    videoFile : item.fileUrl
+                })

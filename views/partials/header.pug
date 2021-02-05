@@ -1,0 +1,23 @@
+header.header
+    div.header__wrapper
+        div.header__column
+            a(href=routes.global.HOME)
+                i.fab.fa-youtube
+        div.header__column
+            form(action=routes.global.SEARCH, method="get")
+                input(type="text", placeholder="Search by term...", name="term")
+                input(type="submit", value="Search")
+        div.header__column
+            ul
+                if !loggerUser
+                    li
+                        a(href=routes.global.JOIN) Join
+                    li
+                        a(href=routes.global.LOGIN) Log In
+                else 
+                    li 
+                        a(href=`/videos${routes.video.UPLOAD}`) Upload
+                    li 
+                        a(href=`${routes.user.ME}`) Profile
+                    li 
+                        a(href=routes.global.LOGOUT) Log Out

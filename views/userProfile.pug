@@ -1,0 +1,11 @@
+extends layouts/main.pug
+
+block content
+    div.form-container 
+        form(action=`/users${routes.user.USER_PROFILE}`, method="post", enctype="multipart/form-data")
+            div.fileUpload
+                label(for="avatar") Avatar
+                input(type="file", id="avatar", name="avatar", autocomplete="off", accept="image/*")
+            input(type="text", placeholder="name", name="name", autocomplete="off", value=loggerUser.name)
+            input(type="email", placeholder="email", name="email", autocomplete="off", value=loggerUser.email)
+            input(type="submit", value="Updata profile", autocomplete="off")

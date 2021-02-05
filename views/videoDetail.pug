@@ -1,0 +1,36 @@
+extends layouts/main.pug
+include ./mixins/videoPlayer.pug
+
+block content
+    div.video-detail__container
+        +videoPlayer({
+            src : video.fileUrl,    
+        })
+        div.video__info 
+            if(loggerUser && video.creator.id === loggerUser.id)
+                a(href=routes.video.EDIT_VIDEO(video.id)) 
+                    button Edit Video
+            h5.video__title=video.title
+            p.video__description=video.description 
+            if video.views === 1 
+                span.video__views 1 view
+            else 
+                span.video__views #{video.views} views
+            div.video__author 
+                | Upolad by | 
+                a(href=`/users${routes.user.USER_DETAIL(video.creator.id)}`)=video.creator.name
+        div.video__comments 
+            if video.comments.length === 1
+                span.video_comments-number 
+                    span#jsCommentNumber 1 
+                    | comment
+            else 
+                span.video_comments-number
+                    span#jsCommentNumber #{video.comments.length} 
+                    | comments
+            form.comment_form#jsAdd_comment
+                input(type="text", name="comment", placeholder="comment")
+            ul.video__comments-list#jsComment_list
+                each comment in video.comments.reverse()
+                    li
+                        span=comment.text

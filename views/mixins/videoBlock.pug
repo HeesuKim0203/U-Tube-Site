@@ -1,0 +1,9 @@
+mixin videoBlock(video = {})
+    div.videoBlock
+        video.videoBlock__thumbanail(src=`/${video.videoFile}`, autoplay=false, controls=true)
+        a(href=`/videos${routes.video.VIDEO_DETAIL(video.id)}`)
+            h4.videoBlock__title=video.title
+            if video.views === 1
+                span.videoBlock__views 1 view
+            else 
+                span.videoBlock__views #{video.views} views

@@ -1,0 +1,12 @@
+extends layouts/main.pug
+
+block content
+        div.form-container 
+                form(action=routes.global.JOIN, method="post")
+                        input(type="text", name="name", placeholder="Full name", required=true, autocomplete="off")
+                        input(type="email", name="email", placeholder="Email", required=true, autocomplete="off")
+                        input(type="password", name="password", placeholder="password", required=true, autocomplete="off")
+                        input(type="password", name="checkPassword", placeholder="Verify password", required=true, autocomplete="off")
+                        input(type="submit", value="Join Now")
+                        
+                include ./partials/socialLogin

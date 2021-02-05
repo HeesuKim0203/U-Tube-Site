@@ -1,0 +1,14 @@
+extends layouts/main.pug
+
+block content
+    div.record-container#jsRrecordContainer
+        video#jsVideoPreview
+        button#jsRecordButton Start Recording
+    div.form-container 
+        form(action=`/videos${routes.video.UPLOAD}`, method="post", enctype="multipart/form-data")
+            div.fileUpload
+                label(for="videoFile") Video File
+                input(type="file", id="videoFile", name="videoFile", required=true, accept="video/*", autocomplete="off")
+            input(type="text", name="title", placeholder="Title", autocomplete="off")
+            textarea(name="description", cols="13", rows="1", placeholder="Description", autocomplete="off")
+            input(type="submit", value="Upload Video")

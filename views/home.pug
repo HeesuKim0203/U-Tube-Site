@@ -1,0 +1,14 @@
+extends layouts/main.pug
+include ./mixins/videoBlock
+
+block content
+    div.home-videos 
+        // 배열을 다룰수 있다 each 각 배열의 값을 할당할 변수 in 배열
+        each item in videos
+            +videoBlock({
+                id : item.id,
+                title : item.title,
+                views : item.views,
+                description : item.description,
+                videoFile : item.fileUrl
+            })
